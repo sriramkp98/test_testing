@@ -65,6 +65,8 @@ public class LoginPage {
 		String forgot_toastmessage="/html/body/div[1]/div[2]";
 		
 		  //Enter these values
+		 String login_username="devi";
+		  String login_password="pass";
 		  String password_value = "Pass@124";
 		  String existing_password_value = "Pass@123";
 		  String user_name="test7";
@@ -250,9 +252,13 @@ public class LoginPage {
           
           //Scenario-3:To check a field validations for reset password page
           Thread.sleep(5000);
-          driver.navigate().to("https://YOPmail.com?"+email);
+          driver.navigate().back();
+          driver.findElement(By.xpath(username)).clear();
+          driver.findElement(By.xpath(username)).sendKeys(login_username);
+          driver.findElement(By.xpath(password)).clear();
+          driver.findElement(By.xpath(password)).sendKeys(login_password);
+          driver.findElement(By.xpath(sign_in)).click();
           Thread.sleep(9000);
-//          driver.findElement(By.tagName("a")).click();
           test.pass("Test Passed");
   		  driver.quit();
   		  extentReports.flush();
